@@ -206,6 +206,14 @@ void editClass(struct st_class *c[], int csize)
 int applyMyClasses(int my[], int msize, struct st_class *c[], int csize)
 {
 
+    int code; 
+
+    printf("신청할 과목코드 입력: ");
+    scanf("%d", &code);
+
+    while(1){
+        
+    }
     return 0;
 }
 
