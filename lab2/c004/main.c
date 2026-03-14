@@ -208,9 +208,6 @@ int applyMyClasses(int my[], int msize, struct st_class *c[], int csize)
 
     int code; 
 
-    printf("신청할 과목코드 입력: ");
-    scanf("%d", &code);
-
     while(1){
 
         printf("신청할 과목코드 입력 (0 입력시 종료): ");
@@ -281,4 +278,49 @@ void printMyClasses(int my[], int msize, struct st_class *c[], int csize)
 
 void saveMyClass(int my[], int msize, struct st_class *c[], int csize)
 {
+    FILE *fp = fopen("my_classes.txt", "w");
+
+    if(fp == NULL){
+        printf("파일 저장 실패\n");
+        return;
+    }
+
+    int total = 0;
+    int grade_credit = 0;
+    int pass_credit = 0;
+
+    fprintf(fp, "My Classes\n");
+
+    for(int i = 0; i < msize; i++){
+        for(int j = 0; j < csize; j++){
+
+            if(my[i] == c[j]->code){
+
+                fprintf(fp,"%03d %s %d ",
+                        c[j]->code,
+                        c[j]->name,
+                        c[j]->unit);
+
+                if(c[j]->grading == 1){
+                    fprintf(fp,"A+~F\n");
+                    grade_credit += c[j]->unit;
+                }
+                else{
+                    fprintf(fp,"P/F\n");
+                    pass_credit += c[j]->unit;
+                }
+
+                total += c[j]->unit;
+            }
+        }
+    }
+
+    fprintf(fp,"\n수강 과목 수: %d\n", msize);
+    fprintf(fp,"총 수강학점: %d\n", total);
+    fprintf(fp,"A+~F 학점: %d\n", grade_credit);
+    fprintf(fp,"P/F 학점: %d\n", pass_credit);
+
+    fclose(fp);
+
+    printf("my_classes.txt 파일 저장 완료\n");
 }
