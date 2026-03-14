@@ -258,6 +258,25 @@ int applyMyClasses(int my[], int msize, struct st_class *c[], int csize)
 
 void printMyClasses(int my[], int msize, struct st_class *c[], int csize)
 {
+    printf("\n[내 수강신청 과목]\n");
+
+    for(int i = 0; i < msize; i++){
+        for(int j = 0; j < csize; j++){
+
+            if(my[i] == c[j]->code){
+
+                printf("%03d %s %d학점 ",
+                       c[j]->code,
+                       c[j]->name,
+                       c[j]->unit);
+
+                if(c[j]->grading == 1)
+                    printf("A+~F\n");
+                else
+                    printf("P/F\n");
+            }
+        }
+    }
 }
 
 void saveMyClass(int my[], int msize, struct st_class *c[], int csize)
