@@ -1,8 +1,6 @@
 main_all
 main
 *.o
-a.out
-
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,c++
