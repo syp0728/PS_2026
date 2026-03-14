@@ -212,9 +212,48 @@ int applyMyClasses(int my[], int msize, struct st_class *c[], int csize)
     scanf("%d", &code);
 
     while(1){
-        
+
+        printf("신청할 과목코드 입력 (0 입력시 종료): ");
+        scanf("%d", &code);
+
+        if(code == 0) break;
+
+        // 과목 존재 확인
+        int exist = 0;
+        for(int i = 0; i < csize; i++){
+            if(c[i]->code == code){
+                exist = 1;
+                break;
+            }
+        }
+
+        if(!exist){
+            printf("존재하지 않는 과목코드입니다.\n");
+            continue;
+        }
+
+        // 중복 검사
+        int duplicate = 0;
+        for(int i = 0; i < msize; i++){
+            if(my[i] == code){
+                duplicate = 1;
+                break;
+            }
+        }
+
+        if(duplicate){
+            printf("이미 신청한 과목입니다.\n");
+            continue;
+        }
+
+        // 과목 추가
+        my[msize] = code;
+        msize++;
+
+        printf("수강신청 완료\n");
     }
-    return 0;
+
+    return msize;
 }
 
 void printMyClasses(int my[], int msize, struct st_class *c[], int csize)
