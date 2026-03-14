@@ -17,4 +17,4 @@
 303 Algorithm 3 1
 304 Capstone1 2 2
 309 ComputerVision 3 1
-401 Capstone1 4 1IC
+401 Capstone1 4 1
