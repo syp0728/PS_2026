@@ -2,4 +2,3 @@ Main project start
 Main is changing same line
 TopicA working
 Banana added
-TopicA working
